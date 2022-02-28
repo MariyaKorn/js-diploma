@@ -1,0 +1,13 @@
+{
+  "name": "js-diploma",
+  "source": "./src/index.html",
+  "scripts": {
+      "start": "parcel"
+  },
+  "dependencies": {
+      "parcel": "latest"
+  },
+  "devDependencies": {
+      "@parcel/transformer-sass": "^2.3.2"
+  }
+}
