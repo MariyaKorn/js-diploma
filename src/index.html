@@ -5,10 +5,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./scss/style.scss">
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <title>Trello</title>
 </head>
 
 <body>
-    
+    <header class="header">
+        <i class="fa-brands fa-trello"></i>
+        <div>Trello</div>
+        <span id="doc-time"></span>
+    </header>
+
+    <div class="boards-wrapper">
+        <div class="boards">
+            <div class="boards-item-todo" id="boards-item-todo">
+                <input class="title" contenteditable="true" placeholder="To Do"></input>
+                <div class="list">
+                    <div class="list-item todo" id="list" draggable="true">Learn React</div>
+                </div>
+
+                <div class="form">
+                    <input class="input" id="input" placeholder="Enter a title for this card..."></input>
+
+                    <div class="buttons">
+                        <button class="add-item-btn" id="add-item-btn">Add card</button>
+                        <button class="cancel-item-btn" id="cancel-item-btn">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="add-btn" id="add-btn"><span>+</span>Add a card</div>
+                <div class="del-board-btn" id="del-board-btn">Delete this board</div>
+            </div>
+
+            <div class="boards-item" id="boards-item-inprogress">
+                <input class="title" contenteditable="true" placeholder="In Progress"></input>
+                <div class="list">
+                    <div class="list-item inprogress" draggable="true">Learn JavaScript</div>
+                </div>
+
+                <div class="form">
+                    <input class="input" id="input" placeholder="Enter a title for this card..."></input>
+
+                    <div class="buttons">
+                        <button class="add-item-btn" id="add-item-btn">Add card</button>
+                        <button class="cancel-item-btn" id="cancel-item-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="boards-item" id="boards-item-done">
+                <input class="title" contenteditable="true" placeholder="Done"></input>
+                <div class="list">
+                    <div class="list-item done" draggable="true">Learn HTML</div>
+                </div>
+
+                <div class="form">
+                    <input class="input" id="input" placeholder="Enter a title for this card..."></input>
+
+                    <div class="buttons">
+                        <button class="add-item-btn" id="add-item-btn">Add card</button>
+                        <button class="cancel-item-btn" id="cancel-item-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="add-board-btn"><span>+</span>Add another board</button>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script type="text/javascript">
+        function clock() {
+        let d = new Date();
+        let month_num = d.getMonth()
+        let day = d.getDate();
+        let hours = d.getHours();
+        let minutes = d.getMinutes();
+        let seconds = d.getSeconds();
+        let weekDay = d.toLocaleString('eng', {weekday: 'long'});
+        
+        month = new Array("January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December");
+        
+        if (day <= 9) day = "0" + day;
+        if (hours <= 9) hours = "0" + hours;
+        if (minutes <= 9) minutes = "0" + minutes;
+        if (seconds <= 9) seconds = "0" + seconds;
+        
+        date_time = day + " " + month[month_num] + " " + d.getFullYear() + " " + "/"+ " " + weekDay + " " + "/" + " " + hours + ":" + minutes + ":" + seconds;
+        if (document.layers) {
+        document.layers.doc-time.document.write(date_time);
+        document.layers.doc-time.document.close();
+        }
+        else document.getElementById("doc-time").innerHTML = date_time;
+        setTimeout("clock()", 1000);
+        }
+
+        clock();
+    </script>
 </body>
 </html>
